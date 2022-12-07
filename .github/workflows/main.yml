@@ -4,7 +4,7 @@ on:
   push:
     branches: [ dev ]
   pull_request:
-    branches: [ dev ]
+    branches: [ dev, staging ]
   workflow_dispatch:
 
 jobs:
@@ -30,7 +30,7 @@ jobs:
 
   DeployStaging:
     name: Deploy to Staging 
-    if: github.event.ref == 'refs/heads/dev'
+    if: github.event.ref == 'refs/heads/staging'
     needs: [Build]
     runs-on: ubuntu-latest
     environment: 
